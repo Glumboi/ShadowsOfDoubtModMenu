@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Il2Cpp;
 using MelonLoader;
 using ShadowsOfDoubtModMenu.Patches;
 using UnityEngine;
@@ -36,9 +37,45 @@ namespace ShadowsOfDoubtModMenu
 
             GUILayout.Space(6);
             GUILayout.BeginHorizontal();
-            PlayerPatches.disableTresspassing = GUILayout.Toggle(PlayerPatches.disableTresspassing, "No Tresspassing");
-            PlayerPatches.disableIllegalActivities = GUILayout.Toggle(PlayerPatches.disableIllegalActivities, "No illegal activities");
+            PlayerPatches.disableTresspassing = GUILayout.Toggle(PlayerPatches.disableTresspassing, "No Trespassing");
+            PlayerPatches.disableIllegalActivities = GUILayout.Toggle(PlayerPatches.disableIllegalActivities, "No illegal Activities");
+            LockpickingPatches.instaLockpick = GUILayout.Toggle(LockpickingPatches.instaLockpick, "Instant Lockpicking");
             GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            //KeypadControllerPatches.alwaysCorrectCode = GUILayout.Toggle(KeypadControllerPatches.alwaysCorrectCode, "Always correct Keycode");
+
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(4);
+
+            GameplayControllerPatches.lockpicksToAdd =
+                Int32.Parse(GUILayout.TextField(GameplayControllerPatches.lockpicksToAdd.ToString()));
+
+            if (GUILayout.Button("Add Lockpick amount"))
+            {
+                GameplayControllerPatches.instance.AddLockpicks(GameplayControllerPatches.lockpicksToAdd, true);
+            }
+
+            GUILayout.Space(2);
+
+            GameplayControllerPatches.moneyToAdd =
+                Int32.Parse(GUILayout.TextField(GameplayControllerPatches.moneyToAdd.ToString()));
+
+            if (GUILayout.Button("Add money amount"))
+            {
+                GameplayControllerPatches.instance.AddMoney(GameplayControllerPatches.moneyToAdd, true, "Money added from Mod Menu!");
+            }
+
+            GUILayout.Space(2);
+
+            GameplayControllerPatches.socialCreditsToAdd =
+                Int32.Parse(GUILayout.TextField(GameplayControllerPatches.socialCreditsToAdd.ToString()));
+
+            if (GUILayout.Button("Add social credit amount"))
+            {
+                GameplayControllerPatches.instance.AddSocialCredit(GameplayControllerPatches.socialCreditsToAdd, true, "Social credit added from Mod Menu!");
+            }
 
             GUILayout.EndVertical();
         }

@@ -32,6 +32,12 @@ namespace ShadowsOfDoubtModMenu
 
         public override void OnUpdate()
         {
+            if (menuEnabled && Cursor.lockState == CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+
             if (Input.GetKeyDown(KeyCode.F2))
             {
                 ToggleMenu(true);
