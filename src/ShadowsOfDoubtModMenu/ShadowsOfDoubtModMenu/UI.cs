@@ -7,6 +7,7 @@ using Il2Cpp;
 using MelonLoader;
 using ShadowsOfDoubtModMenu.Patches;
 using UnityEngine;
+using static MelonLoader.MelonLogger;
 
 namespace ShadowsOfDoubtModMenu
 {
@@ -77,6 +78,44 @@ namespace ShadowsOfDoubtModMenu
                 GameplayControllerPatches.instance.AddSocialCredit(GameplayControllerPatches.socialCreditsToAdd, true, "Social credit added from Mod Menu!");
             }
 
+            GUILayout.Space(6);
+            GUILayout.Label("City generation parameters");
+            GUILayout.Space(2);
+            GUILayout.Label("City size (affects only the very large city generation)");
+            GUILayout.Space(2);
+            GUILayout.BeginHorizontal();
+            GUILayout.BeginVertical();
+            GUILayout.Label("X vector value");
+            CityControlsPatches.newXcitySize = float.Parse(GUILayout.TextField(CityControlsPatches.newXcitySize.ToString()));
+            GUILayout.EndVertical();
+            GUILayout.BeginVertical();
+            GUILayout.Label("Y vector value");
+            CityControlsPatches.newYcitySize = float.Parse(GUILayout.TextField(CityControlsPatches.newYcitySize.ToString()));
+            GUILayout.EndVertical();
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(2);
+
+            GUILayout.Label("City tile size (affects all city sizes)");
+            GUILayout.BeginHorizontal();
+            GUILayout.BeginVertical();
+            GUILayout.Label("X vector value");
+            CityControlsPatches.tileSizeNewX = float.Parse(GUILayout.TextField(CityControlsPatches.tileSizeNewX.ToString()));
+            GUILayout.EndVertical();
+            GUILayout.BeginVertical();
+            GUILayout.Label("Y vector value");
+            CityControlsPatches.tileSizeNewY = float.Parse(GUILayout.TextField(CityControlsPatches.tileSizeNewY.ToString()));
+            GUILayout.EndVertical();
+            GUILayout.BeginVertical();
+            GUILayout.Label("Z vector value");
+            CityControlsPatches.tileSizeNewZ = float.Parse(GUILayout.TextField(CityControlsPatches.tileSizeNewZ.ToString()));
+            GUILayout.EndVertical();
+            GUILayout.EndHorizontal();
+
+            if (GUILayout.Button("Set city generation parameters"))
+            {
+                CityControlsPatches.ApplyNewParameters();
+            }
             GUILayout.EndVertical();
         }
     }

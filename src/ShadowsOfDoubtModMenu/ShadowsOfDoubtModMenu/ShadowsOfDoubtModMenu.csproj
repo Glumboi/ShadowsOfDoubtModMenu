@@ -70,6 +70,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Patches\CityControlsPatches.cs" />
     <Compile Include="Patches\GameplayControllerPatches.cs" />
     <Compile Include="Patches\KeypadControllerPatches.cs" />
     <Compile Include="Patches\LockpickingPatches.cs" />
