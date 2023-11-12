@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using HarmonyLib;
 using Il2Cpp;
 using MelonLoader;
+using static MelonLoader.MelonLogger;
 
 namespace ShadowsOfDoubtModMenu.Patches
 {
@@ -29,7 +30,10 @@ namespace ShadowsOfDoubtModMenu.Patches
         [HarmonyPostfix]
         private static void Postfix_Update(Player __instance)
         {
-            __instance.illegalActionActive = !disableIllegalActivities;
+            if (disableIllegalActivities)
+            {
+                __instance.illegalActionActive = false;
+            }
         }
 
         [HarmonyPatch("IsTrespassing")]
@@ -37,7 +41,10 @@ namespace ShadowsOfDoubtModMenu.Patches
         private static bool Postfix_IsTrespassing(bool __result)
 
         {
-            __result = !disableTresspassing;
+            if (disableTresspassing)
+            {
+                __result = false;
+            }
 
             return __result;
         }
