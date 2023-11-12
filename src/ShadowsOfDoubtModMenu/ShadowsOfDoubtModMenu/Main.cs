@@ -19,6 +19,7 @@ namespace ShadowsOfDoubtModMenu
     public class ShadowsOfDoubtModMenu : MelonMod
     {
         private static bool menuEnabled = false;
+        private static Rect windowRect = new Rect(20, 20, 350, 700);
 
         public override void OnInitializeMelon()
         {

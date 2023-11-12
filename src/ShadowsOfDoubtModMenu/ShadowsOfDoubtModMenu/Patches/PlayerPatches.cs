@@ -14,7 +14,6 @@ namespace ShadowsOfDoubtModMenu.Patches
     internal class PlayerPatches
     {
         public static Player playerInstance;
-        public static bool disableTresspassing;
         public static bool disableIllegalActivities;
 
         [HarmonyPatch("Awake")]
@@ -34,19 +33,6 @@ namespace ShadowsOfDoubtModMenu.Patches
             {
                 __instance.illegalActionActive = false;
             }
-        }
-
-        [HarmonyPatch("IsTrespassing")]
-        [HarmonyPostfix]
-        private static bool Postfix_IsTrespassing(bool __result)
-
-        {
-            if (disableTresspassing)
-            {
-                __result = false;
-            }
-
-            return __result;
         }
     }
 }

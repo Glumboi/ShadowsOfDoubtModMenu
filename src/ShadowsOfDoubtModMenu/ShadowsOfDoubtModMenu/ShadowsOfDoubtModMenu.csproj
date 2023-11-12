@@ -71,8 +71,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Patches\CityControlsPatches.cs" />
+    <Compile Include="Patches\GamePatches.cs" />
     <Compile Include="Patches\GameplayControllerPatches.cs" />
-    <Compile Include="Patches\KeypadControllerPatches.cs" />
     <Compile Include="Patches\LockpickingPatches.cs" />
     <Compile Include="Patches\PlayerPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
