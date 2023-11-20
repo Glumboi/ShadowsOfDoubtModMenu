@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using System;
+using HarmonyLib;
 using Il2Cpp;
 using MelonLoader;
 using UnityEngine;
@@ -43,7 +44,8 @@ namespace ShadowsOfDoubtModMenu.Patches
             MelonLogger.Log("tile size" + instance.cityTileSize);
             for (int i = 0; i < instance.citySizes.Count; i++)
             {
-                MelonLogger.Log("vec2: " + instance.citySizes[i].v2.ToString() + " | actual size:" + instance.citySizes[i].size);
+                MelonLogger.Log("vec2: " + instance.citySizes[i].v2.ToString() + " | actual size:" +
+                                instance.citySizes[i].size);
             }
 
             MelonLogger.Log("district size max: " + instance.districtSizeMax);

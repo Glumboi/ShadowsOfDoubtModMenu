@@ -2,23 +2,29 @@
 using Il2Cpp;
 using MelonLoader;
 using System;
+using ShadowsOfDoubtModMenu.Patches;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace ShadowsOfDoubtModMenu
 {
     public static class BuildInfo
     {
         public const string Name = "ShadowsOfDoubtModMenu"; // Name of the Mod.  (MUST BE SET)
-        public const string Description = "ModMenu for Shadows Of Doubt"; // Description for the Mod.  (Set as null if none)
+
+        public const string
+            Description = "ModMenu for Shadows Of Doubt"; // Description for the Mod.  (Set as null if none)
+
         public const string Author = "Glumboi"; // Author of the Mod.  (MUST BE SET)
         public const string Company = null; // Company that made the Mod.  (Set as null if none)
-        public const string Version = "1.0.0"; // Version of the Mod.  (MUST BE SET)
+        public const string Version = "2.1.0"; // Version of the Mod.  (MUST BE SET)
         public const string DownloadLink = null; // Download Link for the Mod.  (Set as null if none)
     }
 
     public class ShadowsOfDoubtModMenu : MelonMod
     {
         private static bool menuEnabled = false;
+        private static bool caseMenuEnabled = false;
         private static Rect windowRect = new Rect(20, 20, 350, 700);
 
         public override void OnInitializeMelon()
@@ -41,12 +47,17 @@ namespace ShadowsOfDoubtModMenu
 
             if (Input.GetKeyDown(KeyCode.F2))
             {
-                ToggleMenu(true);
+                ToggleAMenu(ref menuEnabled, true);
             }
 
             if (Input.GetKeyDown(KeyCode.F3))
             {
-                ToggleMenu(true, true);
+                ToggleMouse(Cursor.lockState == CursorLockMode.Locked);
+            }
+
+            if (Input.GetKeyDown(KeyCode.F4))
+            {
+                ToggleAMenu(ref caseMenuEnabled, true);
             }
         }
 
@@ -56,20 +67,30 @@ namespace ShadowsOfDoubtModMenu
             {
                 UI.MenuUI();
             }
+
+            if (caseMenuEnabled)
+            {
+                UI.CaseUI();
+            }
         }
 
-        public static void ToggleMenu(bool enable, bool mouseOnly = false)
+        private static void ToggleMouse(bool enable)
         {
-            if (enable && menuEnabled)
-                enable = !enable;
-
-            if (!mouseOnly)
-            {
-                menuEnabled = enable;
-            }
-
             Cursor.lockState = enable ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = enable;
+        }
+
+        private static void ToggleAMenu(ref bool menuBool, bool enable, bool mouseOnly = false)
+        {
+            if (!mouseOnly)
+            {
+                if (enable && menuBool)
+                    enable = false;
+
+                menuBool = enable;
+            }
+
+            ToggleMouse(enable);
         }
     }
 }

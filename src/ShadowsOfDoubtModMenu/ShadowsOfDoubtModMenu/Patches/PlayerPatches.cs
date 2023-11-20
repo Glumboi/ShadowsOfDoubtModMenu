@@ -15,6 +15,7 @@ namespace ShadowsOfDoubtModMenu.Patches
     {
         public static Player playerInstance;
         public static bool disableIllegalActivities;
+        
 
         [HarmonyPatch("Awake")]
         [HarmonyPostfix]
@@ -33,6 +34,7 @@ namespace ShadowsOfDoubtModMenu.Patches
             {
                 __instance.illegalActionActive = false;
             }
+            
         }
     }
 }

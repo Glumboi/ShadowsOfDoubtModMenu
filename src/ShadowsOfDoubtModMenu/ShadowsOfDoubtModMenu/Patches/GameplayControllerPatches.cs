@@ -13,14 +13,16 @@ namespace ShadowsOfDoubtModMenu.Patches
     internal class GameplayControllerPatches
     {
         public static GameplayController instance;
-        public static int lockpicksToAdd;
-        public static int moneyToAdd;
-        public static int socialCreditsToAdd;
+        public static int lockpicksToSet;
+        public static int moneyToSet;
+        public static int socialCreditsToSet;
+        public static bool lockMoney = false; 
+        public static bool lockSocialCredits = false;
+        public static bool lockLockpicks = false;
 
         [HarmonyPatch("Awake")]
         [HarmonyPostfix]
         private static void Postfix_Awake(GameplayController __instance)
-
         {
             MelonLogger.Msg("GameplayController awake!");
             instance = __instance;
