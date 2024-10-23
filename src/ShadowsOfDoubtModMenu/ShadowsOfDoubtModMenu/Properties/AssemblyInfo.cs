@@ -1,15 +1,16 @@
-﻿using MelonLoader;
-using System.Reflection;
+﻿using System.Reflection;
+using MelonLoader;
+using BuildInfo = ShadowsOfDoubtModMenu.BuildInfo;
 
-[assembly: AssemblyTitle(ShadowsOfDoubtModMenu.BuildInfo.Description)]
-[assembly: AssemblyDescription(ShadowsOfDoubtModMenu.BuildInfo.Description)]
-[assembly: AssemblyCompany(ShadowsOfDoubtModMenu.BuildInfo.Company)]
-[assembly: AssemblyProduct(ShadowsOfDoubtModMenu.BuildInfo.Name)]
-[assembly: AssemblyCopyright("Created by " + ShadowsOfDoubtModMenu.BuildInfo.Author)]
-[assembly: AssemblyTrademark(ShadowsOfDoubtModMenu.BuildInfo.Company)]
-[assembly: AssemblyVersion(ShadowsOfDoubtModMenu.BuildInfo.Version)]
-[assembly: AssemblyFileVersion(ShadowsOfDoubtModMenu.BuildInfo.Version)]
-[assembly: MelonInfo(typeof(ShadowsOfDoubtModMenu.ShadowsOfDoubtModMenu), ShadowsOfDoubtModMenu.BuildInfo.Name, ShadowsOfDoubtModMenu.BuildInfo.Version, ShadowsOfDoubtModMenu.BuildInfo.Author, ShadowsOfDoubtModMenu.BuildInfo.DownloadLink)]
+[assembly: AssemblyTitle(BuildInfo.Description)]
+[assembly: AssemblyDescription(BuildInfo.Description)]
+[assembly: AssemblyCompany(BuildInfo.Company)]
+[assembly: AssemblyProduct(BuildInfo.Name)]
+[assembly: AssemblyCopyright("Created by " + BuildInfo.Author)]
+[assembly: AssemblyTrademark(BuildInfo.Company)]
+[assembly: AssemblyVersion(BuildInfo.Version)]
+[assembly: AssemblyFileVersion(BuildInfo.Version)]
+[assembly: MelonInfo(typeof(ShadowsOfDoubtModMenu.ShadowsOfDoubtModMenu), BuildInfo.Name, BuildInfo.Version, BuildInfo.Author, BuildInfo.DownloadLink)]
 [assembly: MelonColor()]
 
 // Create and Setup a MelonGame Attribute to mark a Melon as Universal or Compatible with specific Games.

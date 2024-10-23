@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HarmonyLib;
+﻿using HarmonyLib;
 using Il2Cpp;
-using MelonLoader;
 using static MelonLoader.MelonLogger;
 
 namespace ShadowsOfDoubtModMenu.Patches
@@ -15,14 +9,14 @@ namespace ShadowsOfDoubtModMenu.Patches
     {
         public static Player playerInstance;
         public static bool disableIllegalActivities;
-        
+
 
         [HarmonyPatch("Awake")]
         [HarmonyPostfix]
         private static void Postfix_Awake(Player __instance)
 
         {
-            MelonLogger.Msg("Player awake!");
+            Msg("Player awake!");
             playerInstance = __instance;
         }
 
@@ -34,7 +28,6 @@ namespace ShadowsOfDoubtModMenu.Patches
             {
                 __instance.illegalActionActive = false;
             }
-            
         }
     }
 }
