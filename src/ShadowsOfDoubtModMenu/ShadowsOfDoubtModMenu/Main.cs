@@ -1,10 +1,5 @@
-﻿using HarmonyLib;
-using Il2Cpp;
-using MelonLoader;
-using System;
-using ShadowsOfDoubtModMenu.Patches;
+﻿using MelonLoader;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 namespace ShadowsOfDoubtModMenu
 {
@@ -15,16 +10,16 @@ namespace ShadowsOfDoubtModMenu
         public const string
             Description = "ModMenu for Shadows Of Doubt"; // Description for the Mod.  (Set as null if none)
 
-        public const string Author = "Glumboi"; // Author of the Mod.  (MUST BE SET)
+        public const string Author = "Glumboi and Linkis"; // Author of the Mod.  (MUST BE SET)
         public const string Company = null; // Company that made the Mod.  (Set as null if none)
-        public const string Version = "2.1.0"; // Version of the Mod.  (MUST BE SET)
+        public const string Version = "2.2.0"; // Version of the Mod.  (MUST BE SET)
         public const string DownloadLink = null; // Download Link for the Mod.  (Set as null if none)
     }
 
     public class ShadowsOfDoubtModMenu : MelonMod
     {
-        private static bool menuEnabled = false;
-        private static bool caseMenuEnabled = false;
+        private static bool menuEnabled;
+        private static bool caseMenuEnabled;
         private static Rect windowRect = new Rect(20, 20, 350, 700);
 
         public override void OnInitializeMelon()

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HarmonyLib;
 using Il2Cpp;
-using HarmonyLib;
 using MelonLoader;
 
 namespace ShadowsOfDoubtModMenu.Patches
@@ -16,7 +11,7 @@ namespace ShadowsOfDoubtModMenu.Patches
         public static int lockpicksToSet;
         public static int moneyToSet;
         public static int socialCreditsToSet;
-        public static bool lockMoney = false; 
+        public static bool lockMoney = false;
         public static bool lockSocialCredits = false;
         public static bool lockLockpicks = false;
 

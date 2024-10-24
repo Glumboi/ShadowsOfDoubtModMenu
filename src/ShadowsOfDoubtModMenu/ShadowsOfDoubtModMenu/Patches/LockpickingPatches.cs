@@ -1,5 +1,4 @@
-﻿using System;
-using HarmonyLib;
+﻿using HarmonyLib;
 using Il2Cpp;
 using MelonLoader;
 
@@ -17,7 +16,7 @@ namespace ShadowsOfDoubtModMenu.Patches
             private static void Prefix_OnLockpick(Interactable __instance)
 
             {
-                MelonLogger.Log($"Lockpicking {__instance.GetName()}");
+                MelonLogger.Msg($"Lockpicking {__instance.GetName()}");
                 if (instaLockpick)
                 {
                     __instance.SetLockedState(false, PlayerPatches.playerInstance);
@@ -33,7 +32,7 @@ namespace ShadowsOfDoubtModMenu.Patches
             private static void Prefix_OnLockpick(NewDoor __instance)
 
             {
-                MelonLogger.Log($"Lockpicking {__instance.GetName()}");
+                MelonLogger.Msg($"Lockpicking {__instance.GetName()}");
                 if (instaLockpick)
                 {
                     __instance.SetLocked(false, PlayerPatches.playerInstance);

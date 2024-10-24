@@ -1,9 +1,8 @@
-﻿using System;
+﻿using System.Linq;
 using HarmonyLib;
 using Il2Cpp;
 using MelonLoader;
 using UnityEngine;
-using static Il2Cpp.CityControls;
 
 namespace ShadowsOfDoubtModMenu.Patches
 {
@@ -29,28 +28,31 @@ namespace ShadowsOfDoubtModMenu.Patches
 
         public static void ApplyNewParameters()
         {
-            instance.citySizes[instance.citySizes.Count - 1].v2 = new Vector2(newXcitySize, newYcitySize);
-            instance.cityTileSize = new Vector3(tileSizeNewX, tileSizeNewY, tileSizeNewZ);
+            if (instance.citySizes.Count > 0)
+            {
+                instance.citySizes._items.Last().v2 = new Vector2(newXcitySize, newYcitySize);
+                instance.cityTileSize = new Vector3(tileSizeNewX, tileSizeNewY, tileSizeNewZ);
+            }
 
-            MelonLogger.Log("===============================================");
-            MelonLogger.Log("New Values:");
 
-            CityControlsPatches.LogThings();
+            MelonLogger.Msg("===============================================");
+            MelonLogger.Msg("New Values:");
+
+            LogThings();
         }
 
         public static void LogThings()
-
         {
-            MelonLogger.Log("tile size" + instance.cityTileSize);
+            MelonLogger.Msg("tile size" + instance.cityTileSize);
             for (int i = 0; i < instance.citySizes.Count; i++)
             {
-                MelonLogger.Log("vec2: " + instance.citySizes[i].v2.ToString() + " | actual size:" +
-                                instance.citySizes[i].size);
+                MelonLogger.Msg("vec2: " + instance.citySizes._items[i].v2 + " | actual size:" +
+                                instance.citySizes._items[i].size);
             }
 
-            MelonLogger.Log("district size max: " + instance.districtSizeMax);
-            MelonLogger.Log("district size min: " + instance.districtSizeMin);
-            MelonLogger.Log("max block size: " + instance.maxBlockSize);
+            MelonLogger.Msg("district size max: " + instance.districtSizeMax);
+            MelonLogger.Msg("district size min: " + instance.districtSizeMin);
+            MelonLogger.Msg("max block size: " + instance.maxBlockSize);
         }
     }
 }

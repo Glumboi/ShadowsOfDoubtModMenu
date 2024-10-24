@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using Il2Cpp;
+using MelonLoader;
 
 namespace ShadowsOfDoubtModMenu.Patches
 {
@@ -12,6 +13,7 @@ namespace ShadowsOfDoubtModMenu.Patches
         [HarmonyPostfix]
         public static void Postfix_Awake(MurderController __instance)
         {
+            MelonLogger.Msg("MurderController awake!");
             instance = __instance;
         }
     }
